@@ -1,5 +1,8 @@
 <launch>  
-  <include file="$(find agile_grasp_filter)/launch/agile_grasp_single_camera.launch"/>
+  <include file="$(find agile_grasp_filter)/launch/agile_grasp_single_camera.launch">
+    <arg name="hand_outer_diameter" value="0.15"/>
+    <arg name="num_samples" value="1000"/> 
+  </include>
 
   <node name="agile_grasp_filter" pkg="agile_grasp_filter" type="agile_grasp_filter_node" output="screen"> 
     <param name="threshold" value="-1."/> <!-- [-1.0 , 1.0] -->
