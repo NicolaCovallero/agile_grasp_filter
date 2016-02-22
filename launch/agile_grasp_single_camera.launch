@@ -1,0 +1,19 @@
+<launch>
+  <arg name="hand_outer_diameter" default="0.09"/>
+
+	<node name="find_grasps" pkg="agile_grasp" type="find_grasps">
+    <param name="cloud_topic" value="/detected_objects/points" />
+    <param name="cloud_frame" value="/camera_depth_optical_frame" />
+    <param name="cloud_type" value="0" />
+    <param name="svm_file_name" value="$(find agile_grasp)/svm_032015_20_20_same" />
+    <param name="num_samples" value="500" />
+    <param name="num_threads" value="4" />
+    <param name="num_clouds" value="1" />
+
+		<rosparam param="workspace"> [-10, 10, -10, 10, -10, 10] </rosparam>
+    <param name="hand_outer_diameter" value="$(arg hand_outer_diameter)" />
+    <param name="min_inliers" value="5" />
+    <param name="plotting" value="2" />
+    <param name="marker_lifetime" value="5" />
+	</node>
+</launch>

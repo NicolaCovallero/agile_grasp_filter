@@ -1,0 +1,7 @@
+<launch>  
+  <include file="$(find agile_grasp_filter)/launch/agile_grasp_single_camera.launch"/>
+
+  <node name="agile_grasp_filter" pkg="agile_grasp_filter" type="agile_grasp_filter_node" output="screen"> 
+    <param name="threshold" value="-1."/> <!-- [-1.0 , 1.0] -->
+  </node> 
+</launch>
