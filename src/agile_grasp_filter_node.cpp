@@ -33,13 +33,16 @@ double threshold;/**< equal to minimum value of cos(alpha)
 
 //visualization parameters
 double marker_lifetime_ = 5.;
-double width_scale;
+double width_scale;/*< scale of the width for visualization*/
 
+// Publishers of the node
 ros::Publisher  filtered_grasp_visual_pub,
                 filtered_grasp_pub,
                 filtered_grasp_closing_direction_pub,
                 filtered_grasp_poses_pub;
 
+/*! \brief function to initialize the basic members of the marker object
+*/
 visualization_msgs::Marker createMarker(const std::string& frame)
 {
   visualization_msgs::Marker marker;
@@ -50,7 +53,17 @@ visualization_msgs::Marker createMarker(const std::string& frame)
   return marker;
 } 
  
-// Computes the quaternion associated to the rotation of v2 with respect v1
+/*! \brief Computes the quaternion needed rotate the vector v1 up to v2
+*
+*  This is used only for the Rviz, to get the quaternion for makers set
+*  v1 = (1,0,0) for poses v1 = (0,0,1). It has a singularity condition 
+*  that is when v2 is aligned to v1 made only for the case v1=(1,0,0)
+*  
+*  \TODO make the singular condition for the case v1=(0,0,1)
+*
+*  \param v2 goal vector
+*  \param v1 initial vector
+*/
 tf::Quaternion quaternionFromVector(tf::Vector3 v2,tf::Vector3 v1) //the PoseArray in Rviz is respect with (1,0,0)
 {
   // all the normalizations are important! except the last one (with this method!)
@@ -78,7 +91,7 @@ tf::Quaternion quaternionFromVector(tf::Vector3 v2,tf::Vector3 v1) //the PoseArr
   }
 
   // Build quaternion
-  tf::Quaternion quatern; 
+  tf::Quaternion quatern(); 
   quatern.setX(cross_vector.x() * sin(angle));
   quatern.setY(cross_vector.y() * sin(angle));
   quatern.setZ(cross_vector.z() * sin(angle));
@@ -88,25 +101,15 @@ tf::Quaternion quaternionFromVector(tf::Vector3 v2,tf::Vector3 v1) //the PoseArr
   return quatern;
 }
 
-
-//this function just computes the quaternion relative to a rotation of "angle" radians
-// around the vector v1
-tf::Quaternion quaternionFromRotAroundVector(tf::Vector3 v1,double angle)
-{
-  v1.normalize();
-  
-  // Build quaternion
-  tf::Quaternion quatern; 
-  quatern.setX(v1.x() * sin(angle/2));
-  quatern.setY(v1.y() * sin(angle/2));
-  quatern.setZ(v1.z() * sin(angle/2));
-  quatern.setW(cos(angle/2));  
-  quatern.normalize(); 
-
-  return quatern;
-}
-
-
+/*! \brief Function to create the closing direction marker
+*
+* \param frame reference frame of the marker 
+* \param center center point of the marker(it would be the surface_center of the grasp)
+* \param axis axis orthogonal to the closing plane
+* \param approach approaching vector
+* \param seq identifier of the marker
+* \param width length of the marker
+*/
 visualization_msgs::Marker createClosingDirectionMarker(const std::string& frame,const geometry_msgs::Point& center,
                                                         geometry_msgs::Vector3& axis,
                                                         geometry_msgs::Vector3& approach,
@@ -127,7 +130,7 @@ visualization_msgs::Marker createClosingDirectionMarker(const std::string& frame
   marker.color.r = 1.0;
   marker.color.a = 1.0; 
 
-  marker.scale.x = width;
+  marker.scale.x = width * width_scale;
   marker.scale.y = 0.002;
   marker.scale.z = 0.002;
 
@@ -147,7 +150,7 @@ visualization_msgs::Marker createClosingDirectionMarker(const std::string& frame
   tf::Quaternion quat_tf = quaternionFromVector(v2,v1);
   // we have to turn this by 90 degrees around the approach direction
   tf::Vector3 approach_vector(approach.x,approach.y,approach.z);
-  tf::Quaternion rotation_pi = quaternionFromRotAroundVector(approach_vector, M_PI/2);
+  tf::Quaternion rotation_pi(approach_vector,M_PI/2);//axis angle construction
   quat_tf = rotation_pi * quat_tf;
   marker.pose.orientation.x = quat_tf.x();
   marker.pose.orientation.y = quat_tf.y();
@@ -157,6 +160,15 @@ visualization_msgs::Marker createClosingDirectionMarker(const std::string& frame
   return marker;
 }
 
+/*! \brief create the marker (ARROW) for the approaching direction of the grasp
+* \param frame reference frame of the marker
+* \param center center point of the marker (it should be the surface_center point of the grasp)
+* \param approach approaching direction vector
+* \parma id marker's identifier
+* \param r,g,b, color of the marker
+* \param alpha transparency factor
+* \param diam diameter of the arrow
+*/
 visualization_msgs::Marker createApproachMarker(const std::string& frame, const geometry_msgs::Point& center, 
   geometry_msgs::Vector3& approach, int id, double r, double g, double b , double alpha, double diam)
 {
@@ -206,10 +218,13 @@ geometry_msgs::Pose getPose(geometry_msgs::Point& center,
   return tmp; 
 }
 
+/*! \brief Callback for the agile_grasp::Grasps message
+
+  It filters out the grasping poses and publish the markers
+
+*/
 void callback(const agile_grasp::Grasps::ConstPtr& msg)
 {
-  //std::string name_id = msg->header.frame_id;
-  //ROS_INFO("frame_id: %s",name_id.c_str());
 
   agile_grasp::Grasps filtered_grasps_msg;
   filtered_grasps_msg.header = msg->header;
