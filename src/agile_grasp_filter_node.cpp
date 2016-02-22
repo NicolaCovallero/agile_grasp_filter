@@ -91,7 +91,7 @@ tf::Quaternion quaternionFromVector(tf::Vector3 v2,tf::Vector3 v1) //the PoseArr
   }
 
   // Build quaternion
-  tf::Quaternion quatern(); 
+  tf::Quaternion quatern; 
   quatern.setX(cross_vector.x() * sin(angle));
   quatern.setY(cross_vector.y() * sin(angle));
   quatern.setZ(cross_vector.z() * sin(angle));
@@ -198,6 +198,9 @@ visualization_msgs::Marker createApproachMarker(const std::string& frame, const 
   return marker;
 }
 
+/*! \brief returns the pose
+*\TODO the quaternion is not well computed
+*/
 geometry_msgs::Pose getPose(geometry_msgs::Point& center,
                             geometry_msgs::Vector3& approach)
 {
@@ -273,10 +276,11 @@ void callback(const agile_grasp::Grasps::ConstPtr& msg)
     visualization_msgs::MarkerArray filtered_grasps_visual;
     filtered_grasps_visual.markers.resize((int)filtered_grasps.size());  
 
+    // THE QUATERNION of the poses is not well done
     geometry_msgs::PoseArray poses;
     poses.header.seq = 0;
     poses.header.stamp = ros::Time::now();
-    poses.header.frame_id = "/camera_depth_optical_frame";
+    poses.header.frame_id = "/camera_rgb_optical_frame";
 
     
     for (int i=0; i < filtered_grasps.size(); i++)
@@ -285,12 +289,12 @@ void callback(const agile_grasp::Grasps::ConstPtr& msg)
       position.x = filtered_grasps[i].surface_center.x;
       position.y = filtered_grasps[i].surface_center.y;
       position.z = filtered_grasps[i].surface_center.z;
-      visualization_msgs::Marker marker = createApproachMarker("camera_depth_optical_frame", position, filtered_grasps[i].approach,
+      visualization_msgs::Marker marker = createApproachMarker("camera_rgb_optical_frame", position, filtered_grasps[i].approach,
                                   i, 0., 0., 1., 0.4, 0.004);
       marker.ns = "filtered_grasps_visual ";
       marker.id = i;
       filtered_grasps_visual.markers[i] = marker;
-      closing_dir_markers.markers.push_back(createClosingDirectionMarker("camera_depth_optical_frame",
+      closing_dir_markers.markers.push_back(createClosingDirectionMarker("camera_rgb_optical_frame",
                                                       position,
                                                       filtered_grasps[i].axis,
                                                       filtered_grasps[i].approach,

@@ -14,7 +14,7 @@ Panels:
         - /PointCloud21
         - /PoseArray1
       Splitter Ratio: 0.5
-    Tree Height: 460
+    Tree Height: 409
   - Class: rviz/Selection
     Name: Selection
   - Class: rviz/Tool Properties
@@ -33,7 +33,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: PointCloud2
+    SyncSource: ""
 Visualization Manager:
   Class: ""
   Displays:
@@ -62,22 +62,6 @@ Visualization Manager:
       Radius: 0.01
       Reference Frame: <Fixed Frame>
       Value: true
-    - Alpha: 1
-      Class: rviz/RobotModel
-      Collision Enabled: false
-      Enabled: true
-      Links:
-        All Links Enabled: true
-        Expand Joint Details: false
-        Expand Link Details: false
-        Expand Tree: false
-        Link Tree Style: Links in Alphabetic Order
-      Name: RobotModel
-      Robot Description: robot_description
-      TF Prefix: ""
-      Update Interval: 0
-      Value: true
-      Visual Enabled: true
     - Class: rviz/MarkerArray
       Enabled: true
       Marker Topic: /demos_marker
@@ -91,146 +75,7 @@ Visualization Manager:
       Marker Topic: /agile_grasp_filter/filtered_grasp_closing_direction
       Name: MarkerArray
       Namespaces:
-        closing_direction_0: true
-        closing_direction_1: true
-        closing_direction_10: true
-        closing_direction_100: true
-        closing_direction_101: true
-        closing_direction_102: true
-        closing_direction_103: true
-        closing_direction_104: true
-        closing_direction_105: true
-        closing_direction_106: true
-        closing_direction_107: true
-        closing_direction_108: true
-        closing_direction_109: true
-        closing_direction_11: true
-        closing_direction_110: true
-        closing_direction_111: true
-        closing_direction_112: true
-        closing_direction_113: true
-        closing_direction_114: true
-        closing_direction_115: true
-        closing_direction_116: true
-        closing_direction_117: true
-        closing_direction_118: true
-        closing_direction_119: true
-        closing_direction_12: true
-        closing_direction_120: true
-        closing_direction_121: true
-        closing_direction_122: true
-        closing_direction_123: true
-        closing_direction_124: true
-        closing_direction_125: true
-        closing_direction_126: true
-        closing_direction_127: true
-        closing_direction_128: true
-        closing_direction_129: true
-        closing_direction_13: true
-        closing_direction_130: true
-        closing_direction_131: true
-        closing_direction_132: true
-        closing_direction_133: true
-        closing_direction_134: true
-        closing_direction_135: true
-        closing_direction_136: true
-        closing_direction_137: true
-        closing_direction_138: true
-        closing_direction_139: true
-        closing_direction_14: true
-        closing_direction_15: true
-        closing_direction_16: true
-        closing_direction_17: true
-        closing_direction_18: true
-        closing_direction_19: true
-        closing_direction_2: true
-        closing_direction_20: true
-        closing_direction_21: true
-        closing_direction_22: true
-        closing_direction_23: true
-        closing_direction_24: true
-        closing_direction_25: true
-        closing_direction_26: true
-        closing_direction_27: true
-        closing_direction_28: true
-        closing_direction_29: true
-        closing_direction_3: true
-        closing_direction_30: true
-        closing_direction_31: true
-        closing_direction_32: true
-        closing_direction_33: true
-        closing_direction_34: true
-        closing_direction_35: true
-        closing_direction_36: true
-        closing_direction_37: true
-        closing_direction_38: true
-        closing_direction_39: true
-        closing_direction_4: true
-        closing_direction_40: true
-        closing_direction_41: true
-        closing_direction_42: true
-        closing_direction_43: true
-        closing_direction_44: true
-        closing_direction_45: true
-        closing_direction_46: true
-        closing_direction_47: true
-        closing_direction_48: true
-        closing_direction_49: true
-        closing_direction_5: true
-        closing_direction_50: true
-        closing_direction_51: true
-        closing_direction_52: true
-        closing_direction_53: true
-        closing_direction_54: true
-        closing_direction_55: true
-        closing_direction_56: true
-        closing_direction_57: true
-        closing_direction_58: true
-        closing_direction_59: true
-        closing_direction_6: true
-        closing_direction_60: true
-        closing_direction_61: true
-        closing_direction_62: true
-        closing_direction_63: true
-        closing_direction_64: true
-        closing_direction_65: true
-        closing_direction_66: true
-        closing_direction_67: true
-        closing_direction_68: true
-        closing_direction_69: true
-        closing_direction_7: true
-        closing_direction_70: true
-        closing_direction_71: true
-        closing_direction_72: true
-        closing_direction_73: true
-        closing_direction_74: true
-        closing_direction_75: true
-        closing_direction_76: true
-        closing_direction_77: true
-        closing_direction_78: true
-        closing_direction_79: true
-        closing_direction_8: true
-        closing_direction_80: true
-        closing_direction_81: true
-        closing_direction_82: true
-        closing_direction_83: true
-        closing_direction_84: true
-        closing_direction_85: true
-        closing_direction_86: true
-        closing_direction_87: true
-        closing_direction_88: true
-        closing_direction_89: true
-        closing_direction_9: true
-        closing_direction_90: true
-        closing_direction_91: true
-        closing_direction_92: true
-        closing_direction_93: true
-        closing_direction_94: true
-        closing_direction_95: true
-        closing_direction_96: true
-        closing_direction_97: true
-        closing_direction_98: true
-        closing_direction_99: true
+        {}
       Queue Size: 100
       Value: true
     - Class: rviz/MarkerArray
@@ -238,7 +83,7 @@ Visualization Manager:
       Marker Topic: /agile_grasp_filter/filtered_grasp_visual
       Name: MarkerArray
       Namespaces:
-        "filtered_grasps_visual ": true
+        {}
       Queue Size: 100
       Value: true
     - Class: rviz/MarkerArray
@@ -246,7 +91,7 @@ Visualization Manager:
       Marker Topic: /find_grasps/handles_visual
       Name: MarkerArray
       Namespaces:
-        handles: true
+        {}
       Queue Size: 100
       Value: true
     - Alpha: 1
@@ -309,30 +154,30 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 0.771609
+      Distance: 1.35984
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.06
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.764161
-        Y: 0.0912685
-        Z: -0.0504726
+        X: 0.312444
+        Y: 0.314455
+        Z: -0.153006
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: 0.789798
+      Pitch: 0.524798
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 5.95541
+      Yaw: 4.39041
     Saved: ~
 Window Geometry:
   Displays:
     collapsed: false
-  Height: 768
+  Height: 717
   Hide Left Dock: false
   Hide Right Dock: true
-  QMainWindow State: 000000ff00000000fd00000004000000000000013c0000025efc0200000008fb0000001200530065006c0065006300740069006f006e00000000430000025e0000006700fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c00610079007301000000430000025e000000e300fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261000000010000010f00000242fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000002800000242000000b300fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000005560000003bfc0100000002fb0000000800540069006d00650100000000000005560000023a00fffffffb0000000800540069006d00650100000000000004500000000000000000000004140000025e00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd00000004000000000000013c0000022bfc0200000008fb0000001200530065006c0065006300740069006f006e00000000430000025e0000006700fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c00610079007301000000430000022b000000e300fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261000000010000010f00000242fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000002800000242000000b300fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e100000197000000030000053c0000003bfc0100000002fb0000000800540069006d006501000000000000053c0000023a00fffffffb0000000800540069006d00650100000000000004500000000000000000000003fa0000022b00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Selection:
     collapsed: false
   Time:
@@ -341,6 +186,6 @@ Window Geometry:
     collapsed: false
   Views:
     collapsed: true
-  Width: 1366
-  X: 0
+  Width: 1340
+  X: 26
   Y: 0

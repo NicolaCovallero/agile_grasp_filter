@@ -17,6 +17,12 @@
         <param name="plotting" value="2" />
         <param name="marker_lifetime" value="5" />
 
+        <rosparam param="camera_pose"> [0, 0.445417, 0.895323, 0.215, 
+          1, 0, 0, -0.015, 
+          0, 0.895323, -0.445417, 0.23, 
+          0, 0, 0, 1] </rosparam>
+
+        <!-- gripper modelling -->
         <param name="hand_outer_diameter" value="$(arg hand_outer_diameter)" />
         <param name="hand_depth" value="0.06" />
         <param name="init_bite" value="0.01" />
