@@ -2,10 +2,9 @@
   <arg name="hand_outer_diameter" default="0.09"/>
   <arg name="num_samples" default="500"/>
 
-
 	<node name="find_grasps" pkg="agile_grasp" type="find_grasps">
         <param name="cloud_topic" value="/detected_objects/points" />
-        <param name="cloud_frame" value="/camera_depth_optical_frame" />
+        <param name="cloud_frame" value="/camera_rgb_optical_frame" />
         <param name="cloud_type" value="0" />
         <param name="svm_file_name" value="$(find agile_grasp)/svm_032015_20_20_same" />
         <param name="num_samples" value="$(arg num_samples)" />
