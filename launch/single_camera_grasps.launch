@@ -11,10 +11,13 @@
     <param name="num_threads" value="4" />
     <param name="num_clouds" value="1" />
 		<rosparam param="workspace"> [-10, 10, -10, 10, -10, 10] </rosparam>
-    <!--<rosparam param="camera_pose"> [0, 0.445417, 0.895323, 0.215, 
+
+    <!-- This is required from the algorithm but it is ininfluent for our use-->
+    <rosparam param="camera_pose"> [0, 0.445417, 0.895323, 0.215, 
               1, 0, 0, -0.015, 
               0, 0.895323, -0.445417, 0.23, 
-              0, 0, 0, 1] </rosparam>-->
+              0, 0, 0, 1] </rosparam>
+              
     <param name="min_inliers" value="10" />
     <param name="plotting" value="2" />
     <param name="marker_lifetime" value="5" />
