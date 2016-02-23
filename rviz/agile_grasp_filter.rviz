@@ -33,7 +33,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: ""
+    SyncSource: PointCloud2
 Visualization Manager:
   Class: ""
   Displays:
@@ -91,7 +91,7 @@ Visualization Manager:
       Marker Topic: /find_grasps/handles_visual
       Name: MarkerArray
       Namespaces:
-        {}
+        handles: true
       Queue Size: 100
       Value: true
     - Alpha: 1
@@ -119,7 +119,7 @@ Visualization Manager:
       Size (Pixels): 3
       Size (m): 0.01
       Style: Points
-      Topic: /detected_objects/points
+      Topic: /segmented_objects/points
       Use Fixed Frame: true
       Use rainbow: true
       Value: true
@@ -154,7 +154,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 1.35984
+      Distance: 3.00617
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.06
         Stereo Focal Distance: 1
@@ -166,10 +166,10 @@ Visualization Manager:
         Z: -0.153006
       Name: Current View
       Near Clip Distance: 0.01
-      Pitch: 0.524798
+      Pitch: 0.674798
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 4.39041
+      Yaw: 3.30541
     Saved: ~
 Window Geometry:
   Displays:
